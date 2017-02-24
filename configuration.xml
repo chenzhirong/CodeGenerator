@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<configuration>
+    <classpath>
+        <entry>lib/ojdbc14.jar</entry>
+    </classpath>
+    <connections>
+        <database name="hc_zb">
+            <driverClass>oracle.jdbc.driver.OracleDriver</driverClass>
+            <url>jdbc:oracle:thin:@localhost:1521:orcl</url>
+            <username>hc_zb</username>
+            <password>hc_zb</password>
+            <schema/>
+        </database>
+    </connections>
+    <targetProject>D:\CreateCode</targetProject>
+    <basePackage>hc.zb</basePackage>
+    <moduleName>zb</moduleName>
+    <templates>
+        <template engine="freemarker" name="控制层" selected="true">
+            <templateFile>action.ftl</templateFile>
+            <targetPath>${targetProject}\action\</targetPath>
+            <targetFileName>${table.className}Action.java</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+        <template engine="freemarker" name="dao层" selected="true">
+            <templateFile>dao.ftl</templateFile>
+            <targetPath>${targetProject}\dao\</targetPath>
+            <targetFileName>${table.className}Mapper.java</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+        <template engine="freemarker" name="实体类" selected="true">
+            <templateFile>bean.ftl</templateFile>
+            <targetPath>${targetProject}\domain\</targetPath>
+            <targetFileName>${table.className}.java</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+        <template engine="freemarker" name="实体类Example" selected="true">
+            <templateFile>beanExample.ftl</templateFile>
+            <targetPath>${targetProject}\domain\</targetPath>
+            <targetFileName>${table.className}Example.java</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+        <template engine="freemarker" name="服务层" selected="true">
+            <templateFile>service.ftl</templateFile>
+            <targetPath>${targetProject}\service\</targetPath>
+            <targetFileName>${table.className}Service.java</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+        <template engine="freemarker" name="服务层实现类" selected="true">
+            <templateFile>serviceImpl.ftl</templateFile>
+            <targetPath>${targetProject}\service\Impl</targetPath>
+            <targetFileName>${table.className}ServiceImpl.java</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+        <template engine="freemarker" name="MyBatis配置文件" selected="true">
+            <templateFile>mybatis.ftl</templateFile>
+            <targetPath>${targetProject}\</targetPath>
+            <targetFileName>${table.className}Mapper.xml</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+    </templates>
+</configuration>

@@ -1,0 +1,57 @@
+----主键
+<#list table.primaryKeys as key>
+${key.columnName}      大写
+${key.javaProperty}    小写
+${key.remarks}
+${key.javaType}
+</#list>
+
+
+----字段
+<#list table.baseColumns as column>
+${column.columnName}       大写
+${column.javaProperty}     小写
+</#list>
+
+---日期 date
+<#if (column.isDate())>
+</#if>
+<#if (column.isString())>
+</#if>
+//是否是整型，含Byte、Short、Integer、Long
+<#if (column.isIntegerNumber())>
+</#if>
+
+
+VARCHAR  DATE  DECIMAL
+
+---最后一次List
+<#if column_has_next>,</#if>
+
+<!-- 定义变量 -->
+<#assign douhao="#">
+andy
+
+<#list table.primaryKeys as key>
+      <if test="record.${key.javaProperty} != null" >
+        ID = #{record.${key.javaProperty},jdbcType=DECIMAL},
+      </if>
+</#list>
+    
+<#list table.baseColumns as column>
+      <#if (column.isDate())>
+           <if test="record.columnname != null" >
+              ${column.columnName} = #{record.${column.javaProperty},jdbcType=DATE},
+          </if>
+     </#if>
+     <#if (column.isString())>
+          <if test="record.columnname != null" >
+              ${column.columnName} = #{record.${column.javaProperty},jdbcType=VARCHAR},
+          </if>
+     </#if>
+     <#if (column.isIntegerNumber())>
+          <if test="record.columnname != null" >
+              ${column.columnName} = #{record.${column.javaProperty},jdbcType=DECIMAL},
+          </if>
+     </#if>
+</#list>
