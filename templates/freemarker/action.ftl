@@ -41,8 +41,8 @@ public class ${table.className}Action {
 	
 	@RequestMapping("/get")
 	@ResponseBody
-	public ${table.className} get(HttpServletRequest request, Long id){
-		return service.selectByPrimaryKey(id);
+	public ${table.className} get(HttpServletRequest request, Long objid){
+		return service.selectByPrimaryKey(objid);
 	}
 	
 	@RequestMapping("/list")
@@ -109,16 +109,10 @@ public class ${table.className}Action {
 	
 	@RequestMapping(value = "/del", method = RequestMethod.POST)
 	@ResponseBody
-	public OptResult del(@RequestParam Long id, @RequestParam Boolean real) {
+	public OptResult del(Long objid) {
 		OptResult result = new OptResult();
 		try {
-			if (real) {
-				service.deleteByPrimaryKey(id);
-
-			} else {
-				${table.className} record = new ${table.className}();
-				service.updateByPrimaryKeySelective(record);
-			}
+			service.deleteByPrimaryKey(id);
 			result.setSuccess();
 		} catch (Exception e) {
 			result.setMsg(e.getMessage());

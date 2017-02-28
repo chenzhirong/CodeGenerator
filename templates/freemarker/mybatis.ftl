@@ -124,10 +124,15 @@
   </delete>
   <insert id="insert" parameterType="${basePackage}.domain.${table.className}" >
     insert into ${table.tableName} 
-    jonee
-    (OBJID, COLUMNNAME, COLUMNCODE,LVLCODE)
+    (
+    <#list table.primaryKeys as key>
+    ${key.javaProperty},
+    </#list>
+    <#list table.baseColumns as column>
+      ${column.javaProperty}<#if column_has_next>,</#if>
+   </#list>
+    )
     values (${douhao}{objid,jdbcType=DECIMAL},
-    
     <#list table.baseColumns as column>
       <#if (column.isDate())>
     ${douhao}{${column.javaProperty} ,jdbcType=DATE}<#if column_has_next>,</#if>
@@ -143,7 +148,7 @@
   <insert id="insertSelective" parameterType="${basePackage}.domain.${table.className}" >
     insert into ${table.tableName}
     <trim prefix="(" suffix=")" suffixOverrides="," >
-    
+    OBJID,
     <#list table.baseColumns as column>
       <if test="${column.javaProperty} != null" >
         ${column.columnName},
@@ -152,10 +157,23 @@
     </trim>
     
     <trim prefix="values (" suffix=")" suffixOverrides="," >
+       CZR_SEQ.nextval,
       <#list table.baseColumns as column>
-      <if test="${column.javaProperty} != null" >
-        ${douhao}{${column.javaProperty},jdbcType=DECIMAL},
-      </if>
+      <#if (column.isDate())>
+         <if test="${column.javaProperty} != null" >
+             ${douhao}{${column.javaProperty},jdbcType=DATE},
+         </if>
+      </#if>
+      <#if (column.isString())>
+         <if test="${column.javaProperty} != null" >
+             ${douhao}{${column.javaProperty},jdbcType=VARCHAR},
+         </if>
+      </#if>
+      <#if (column.isIntegerNumber())>
+         <if test="${column.javaProperty} != null" >
+             ${douhao}{${column.javaProperty},jdbcType=DECIMAL},
+         </if>
+      </#if>
      </#list>
     </trim>
     
@@ -199,7 +217,7 @@
     </if>
   </update>
   
-  <!-- 更新E -->
+  <!-- 更新 -->
   <update id="updateByExample" parameterType="map" >
     update ${table.tableName}
     set 
@@ -238,17 +256,17 @@
     <#list table.baseColumns as column>
       <#if (column.isDate())>
            <if test="${column.javaProperty} != null" >
-               ${column.columnName} = ${douhao}{record.${column.javaProperty},jdbcType=DATE}<#if column_has_next>,</#if>
+               ${column.columnName} = ${douhao}{${column.javaProperty},jdbcType=DATE}<#if column_has_next>,</#if>
            </if>
      </#if>
      <#if (column.isString())>
           <if test="${column.javaProperty} != null" >
-               ${column.columnName} = ${douhao}{record.${column.javaProperty},jdbcType=VARCHAR}<#if column_has_next>,</#if>
+               ${column.columnName} = ${douhao}{${column.javaProperty},jdbcType=VARCHAR}<#if column_has_next>,</#if>
            </if>
      </#if>
      <#if (column.isIntegerNumber())>
           <if test="${column.javaProperty} != null" >
-               ${column.columnName} = ${douhao}{record.${column.javaProperty},jdbcType=DECIMAL}<#if column_has_next>,</#if>
+               ${column.columnName} = ${douhao}{${column.javaProperty},jdbcType=DECIMAL}<#if column_has_next>,</#if>
            </if>
      </#if>
     </#list>

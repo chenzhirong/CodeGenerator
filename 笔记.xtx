@@ -55,3 +55,14 @@ andy
           </if>
      </#if>
 </#list>
+
+
+()
+ (
+    <#list table.primaryKeys as key>
+    ${key.javaProperty},
+    </#list>
+    <#list table.baseColumns as column>
+      ${key.javaProperty}<#if column_has_next>,</#if>
+   </#list>
+    )
