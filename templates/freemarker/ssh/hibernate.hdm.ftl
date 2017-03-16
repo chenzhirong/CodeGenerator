@@ -14,21 +14,21 @@
 <#list table.baseColumns as column>
       <#if (column.isDate())>
          <property name="${column.javaProperty}" type="java.util.Date">
-            <column name="${column.columnName}" length="${Column.size}">
+            <column name="${column.columnName}" length="${column.size}">
                 <comment>${column.remarks}</comment>
             </column>
         </property>
      </#if>
      <#if (column.isString())>
          <property name="${column.javaProperty}" type="java.lang.String">
-            <column name="${column.columnName}" length="${Column.size}">
+            <column name="${column.columnName}" length="${column.size}">
                 <comment>${column.remarks}</comment>
             </column>
         </property>
      </#if>
      <#if (column.isIntegerNumber())>
-         <property name="${column.javaProperty}" type="java.util.Long">
-            <column name="${column.columnName}" length="${Column.size}">
+         <property name="${column.javaProperty}" type="java.lang.Long">
+            <column name="${column.columnName}" length="${column.size}">
                 <comment>${column.remarks}</comment>
             </column>
         </property>

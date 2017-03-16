@@ -127,6 +127,9 @@ public class DefaultDatabase extends Database {
                 column.setJavaType(typeMapping.calculateJavaType(column));
                 column.setFullJavaType(typeMapping.calculateFullJavaType(column));
                 column.setJavaProperty(StringUtil.getCamelCaseString(columnName, false));
+                System.out.println("JavaType="+column.getJavaType());
+                System.out.println("rongzai=Column.size="+column.getSize());
+                System.out.println("Remarks="+column.getRemarks());
             }
 
         } catch (SQLException e) {
