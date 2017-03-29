@@ -315,6 +315,7 @@ public class Generator extends JFrame {
 
     private void initSettings() {
         File f = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getFile());
+        LOGGER.info(getClass().getProtectionDomain().getCodeSource().getLocation().getFile());
         classPath = f.getParentFile().getPath() + File.separator;
         classPath = classPath.replaceAll("%20", " ");
 

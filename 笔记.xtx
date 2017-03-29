@@ -1,4 +1,12 @@
-----主键
+类名：  ${table.className?substring(1)} 
+首字母小写：  ${table.className?substring(1)?uncap_first} 
+全小写：${table.className?substring(1)?lower_case}
+
+包名 ： package ${basePackage}.beans;
+
+首字符小写 
+var?uncap_first 
+----主键   
 <#list table.primaryKeys as key>
 ${key.columnName}      大写
 ${key.javaProperty}    小写
@@ -11,6 +19,7 @@ ${key.javaType}
 <#list table.baseColumns as column>
 ${column.columnName}       大写
 ${column.javaProperty}     小写
+${column.remarks}
 </#list>
 
 ---日期 date

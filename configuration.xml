@@ -12,20 +12,62 @@
             <schema/>
         </database>
     </connections>
-    <targetProject>D:\CreateCode</targetProject>
+    <targetProject>D:\01_CreateCode</targetProject>
     <basePackage>com.czr.frame</basePackage>
     <moduleName>zb</moduleName>
     <templates>
         <template engine="freemarker" name="实体类" selected="true">
-            <templateFile>/ssh/bean.ftl</templateFile>
+            <templateFile>/SSHFrame/bean.ftl</templateFile>
             <targetPath>${targetProject}\beans\</targetPath>
             <targetFileName>${table.className?substring(1)}.java</targetFileName>
             <encoding>UTF-8</encoding>
         </template>
         <template engine="freemarker" name="hibernate.hbm.xml" selected="true">
-            <templateFile>/ssh/hibernate.hdm.ftl</templateFile>
+            <templateFile>/SSHFrame/hibernate.hdm.ftl</templateFile>
             <targetPath>${targetProject}\domain\</targetPath>
             <targetFileName>${table.className?substring(1)}.hbm.xml</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+        <template engine="freemarker" name="action" selected="true">
+            <templateFile>/SSHFrame/action.ftl</templateFile>
+            <targetPath>${targetProject}\action\</targetPath>
+            <targetFileName>${table.className?substring(1)}Action.java</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+        <template engine="freemarker" name="struts" selected="true">
+            <templateFile>/SSHFrame/struts.ftl</templateFile>
+            <targetPath>${targetProject}\config\</targetPath>
+            <targetFileName>${table.className?substring(1)?lower_case}_struts-config.xml</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+        <template engine="freemarker" name="spring" selected="true">
+            <templateFile>/SSHFrame/spring.ftl</templateFile>
+            <targetPath>${targetProject}\config\</targetPath>
+            <targetFileName>${table.className?substring(1)?lower_case}_spring-config.xml</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+        <template engine="freemarker" name="service" selected="true">
+            <templateFile>/SSHFrame/service.ftl</templateFile>
+            <targetPath>${targetProject}\service\</targetPath>
+            <targetFileName>${table.className?substring(1)}Service.java</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+        <template engine="freemarker" name="serviceimpl" selected="true">
+            <templateFile>/SSHFrame/serviceImpl.ftl</templateFile>
+            <targetPath>${targetProject}\service\</targetPath>
+            <targetFileName>${table.className?substring(1)}ServiceImpl.java</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+        <template engine="freemarker" name="js" selected="true">
+            <templateFile>/SSHFrame/js.ftl</templateFile>
+            <targetPath>${targetProject}\jsp\</targetPath>
+            <targetFileName>${table.className?substring(1)?lower_case}.js</targetFileName>
+            <encoding>UTF-8</encoding>
+        </template>
+        <template engine="freemarker" name="jsp" selected="true">
+            <templateFile>/SSHFrame/jsp.ftl</templateFile>
+            <targetPath>${targetProject}\jsp\</targetPath>
+            <targetFileName>${table.className?substring(1)?lower_case}.jsp</targetFileName>
             <encoding>UTF-8</encoding>
         </template>
     </templates>
